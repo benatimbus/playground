@@ -16,7 +16,7 @@ pipeline {
         }
         stage('SonarQube') {
             steps {
-                echo 'SonarQube....'
+                bat "gradlew sonarqube -Dsonar.host.url=http://localhost:9000 -Dsonar.login=170bb50ab9b069526a12b9e3270ef0f1aa8e53dd"
             }
         }
         stage('Integration Tests') {
