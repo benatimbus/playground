@@ -1,13 +1,10 @@
 group 'de.werling.ci'
 version '1.0-SNAPSHOT'
 
-
-
 buildscript {
     ext{
         spring_plugin_version = "1.5.4.RELEASE"
     }
-
 
     repositories{
         mavenCentral()
@@ -17,8 +14,6 @@ buildscript {
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
     }
 }
-
-
 
 apply plugin: 'java'
 apply plugin: "jacoco"
@@ -41,18 +36,8 @@ dependencies {
 }
 
 test {
-    afterTest { desc, result ->
-        logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
-    }
-
     jacoco {
         append = false
-    }
-}
-
-sonarqube {
-    properties {
-        property "sonar.exclusions", "**/*Generated.java"
     }
 }
 
@@ -63,8 +48,6 @@ jacocoTestReport {
         html.destination file("${buildDir}/reports/jacoco/html")
     }
 }
-
-
 
 bootRun {
     args += ["--server.port=8090"]
