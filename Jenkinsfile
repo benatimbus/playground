@@ -7,15 +7,9 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Build & Unit Test') {
             steps {
-                echo 'Building..'
-                bat 'gradlew build'
-            }
-        }
-        stage('Unit Test & Coverage') {
-            steps {
-                echo 'Testing..'
+                bat 'gradlew clean build jacocoTestReport'
             }
         }
         stage('SonarQube') {
