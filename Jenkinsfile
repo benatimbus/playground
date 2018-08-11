@@ -10,7 +10,8 @@ pipeline {
         stage('Build & Unit Test') {
             steps {
                 bat 'gradlew clean build jacocoTestReport'
-                jacoco(execPattern: '**/*.exec')
+                step( [ $class: 'JacocoPublisher' ] )
+                junit "test-results/test/**/*"
             }
         }
         stage('SonarQube') {
