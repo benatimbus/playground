@@ -11,7 +11,7 @@ pipeline {
             steps {
                 bat 'gradlew clean build jacocoTestReport'
                 step( [ $class: 'JacocoPublisher' ] )
-                junit "build/test-results/test/**/*"
+                junit "build/test-results/test/**/*.xml"
             }
         }
         stage('SonarQube') {
