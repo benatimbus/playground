@@ -1,1 +1,10 @@
-# playground
+Configuration
+-------------
+
+Jenkins
+=======
+* jacoco plugin
+
+
+SonarQube
+=========
