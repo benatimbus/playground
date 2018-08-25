@@ -1,4 +1,4 @@
-import static me.werling.playground.ci.*
+import static Stages.*
 
 pipeline {
     agent any
