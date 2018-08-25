@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Integration Tests') {
             steps {
-                bat 'gradlew integration_test'
+                echo 'gradlew integration_test'
             }
         }
         stage('Docker Image') {
