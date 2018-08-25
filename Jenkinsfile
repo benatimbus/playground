@@ -1,4 +1,10 @@
 
+library identifier: '', retriever: modernSCM(
+    [$class: 'GitSCMSource',
+     remote: 'git@github.com:benatimbus/playground_ci_jenkins.git',
+     credentialsId: '3dc90b17-3b94-4e88-b7c7-41e1bed91bd0'
+)
+
 pipeline {
     agent any
 
