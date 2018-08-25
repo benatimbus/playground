@@ -8,6 +8,7 @@ buildscript {
 
     repositories{
         mavenCentral()
+        maven { url 'http://dl.bintray.com/vermeulen-mp/gradle-plugins' }
     }
     dependencies{
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_plugin_version"
@@ -33,6 +34,22 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+task postman_integration_test {
+    group "Verification"
+    description "Run integration tests with postman"
+
+    Process service = new ProcessBuilder("java", "-jar", "./build/libs/${project.name}-${version}.jar", "--server.port=8091").start()
+
+    exec {
+        commandLine "newman"
+        args("run",
+                "postman\\collections\\CI Test.postman_collection.json",
+                "-e postman\\environments\\Local.postman_environment.json")
+    }
+
+    service.destroy()
 }
 
 test {

@@ -1,3 +1,4 @@
+import static me.werling.playground.ci.*
 
 pipeline {
     agent any
@@ -21,7 +22,7 @@ pipeline {
         }
         stage('Integration Tests') {
             steps {
-                echo 'Integration Tests....'
+                bat 'gradlew integration_test'
             }
         }
         stage('Docker Image') {

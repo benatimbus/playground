@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "5d82081f-93d6-47b8-90ee-810e890bf895",
+		"name": "CI Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1-2=-1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "61ecaba4-6136-4fa5-b3a8-71696c4bdef1",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Substract 1-2=-1\", function() {",
+							"   pm.response.to.have.body(\"-1\")",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{Url}}?left=1&right=2&op=-",
+					"host": [
+						"{{Url}}"
+					],
+					"query": [
+						{
+							"key": "left",
+							"value": "1"
+						},
+						{
+							"key": "right",
+							"value": "2"
+						},
+						{
+							"key": "op",
+							"value": "-"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
