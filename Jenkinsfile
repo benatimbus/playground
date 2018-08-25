@@ -1,4 +1,3 @@
-import static Stages.*
 
 pipeline {
     agent any
