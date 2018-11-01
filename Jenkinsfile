@@ -8,10 +8,6 @@ library identifier: 'playground_ci_jenkins@master', retriever: modernSCM(
 pipeline {
     agent any
 
-    triggers {
-        pollSCM('*/5 * * * *')
-    }
-
     stages {
         stage('Build & Unit Test') {
             steps {
