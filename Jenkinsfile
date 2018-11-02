@@ -5,8 +5,6 @@ library identifier: 'playground_ci_jenkins@master', retriever: modernSCM(
      credentialsId: '73142bae-9eea-4a1f-a916-23e8db523085']
 )
 
-import ci.stage.Build
-
 pipeline {
     agent any
 
