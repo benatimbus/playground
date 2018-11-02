@@ -5,17 +5,15 @@ library identifier: 'playground_ci_jenkins@master', retriever: modernSCM(
      credentialsId: '73142bae-9eea-4a1f-a916-23e8db523085']
 )
 
+import ci.stage.Build
+
 pipeline {
     agent any
 
     stages {
-        stage('Build & Unit Test') {
-            steps {
-                bat 'gradlew clean build jacocoTestReport'
-                step( [ $class: 'JacocoPublisher' ] )
-                junit "build/test-results/test/**/*.xml"
-            }
-        }
+
+        Build(true, true, true, true)
+
         stage('SonarQube') {
             steps {
                 bat "gradlew sonarqube -Dsonar.host.url=http://localhost:9000 -Dsonar.login=170bb50ab9b069526a12b9e3270ef0f1aa8e53dd"
